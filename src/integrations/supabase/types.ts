@@ -14,7 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      rsvp_responses: {
+        Row: {
+          attendance: string
+          created_at: string
+          guest_name: string
+          id: string
+          invite_id: string
+          message: string | null
+        }
+        Insert: {
+          attendance: string
+          created_at?: string
+          guest_name: string
+          id?: string
+          invite_id: string
+          message?: string | null
+        }
+        Update: {
+          attendance?: string
+          created_at?: string
+          guest_name?: string
+          id?: string
+          invite_id?: string
+          message?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
