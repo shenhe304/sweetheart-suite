@@ -1,16 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useNavigate } from "react-router-dom";
+import TemplateCard from "@/components/TemplateCard";
+import type { TemplateName } from "@/lib/inviteStore";
+import { Heart } from "lucide-react";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+export default function Index() {
+  const navigate = useNavigate();
+
+  const handleSelect = (template: TemplateName) => {
+    navigate(`/customize?template=${template}`);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen flex flex-col items-center bg-background">
+      {/* Hero */}
+      <header className="flex flex-col items-center gap-3 pt-16 pb-12 px-4 text-center">
+        <div className="flex items-center gap-2 mb-2">
+          <Heart className="h-6 w-6 text-primary" />
+          <span className="font-serif-display text-2xl font-bold text-foreground tracking-wide">WedLink</span>
+        </div>
+        <h1 className="font-serif-display text-4xl md:text-5xl font-bold text-foreground leading-tight">
+          Create your dream<br />wedding invitation
+        </h1>
+        <p className="text-muted-foreground max-w-md text-base">
+          Choose a template, customize the details, and share your beautiful invite in minutes.
+        </p>
+      </header>
+
+      {/* Templates */}
+      <main className="w-full pb-20 animate-fade-in">
+        <TemplateCard onSelect={handleSelect} />
+      </main>
     </div>
   );
-};
-
-const Index = PlaceholderIndex;
-
-export default Index;
+}
